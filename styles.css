@@ -386,7 +386,7 @@ a:hover, .link:hover { color: var(--accent); border-bottom-color: var(--accent);
 
   .screen { padding: 14px 14px 0; }
 
-  #output { -webkit-overflow-scrolling: touch; }
+  #output { -webkit-overflow-scrolling: touch; overflow-wrap: anywhere; }
 
   /* 16px keeps iOS from zooming in when the input is focused */
   #cmdInput { font-size: 16px; }

@@ -556,11 +556,29 @@
     if (hint) hint.style.opacity = "1";
   }
 
+  let bannerEl = null;
+  function fitBanner() {
+    if (!bannerEl) return;
+    bannerEl.style.fontSize = "";
+    const avail = bannerEl.clientWidth;
+    const needed = bannerEl.scrollWidth;
+    if (avail > 0 && needed > avail) {
+      const cs = parseFloat(getComputedStyle(bannerEl).fontSize) || 12;
+      bannerEl.style.fontSize = (cs * (avail / needed) * 0.99).toFixed(2) + "px";
+    }
+  }
+  window.addEventListener("resize", () => requestAnimationFrame(fitBanner));
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => requestAnimationFrame(fitBanner));
+  }
+
   function renderHome() {
     const ban = el("pre", "banner");
     ban.style.margin = "0";
     ban.textContent = BANNER;
     printBlock(ban);
+    bannerEl = ban;
+    requestAnimationFrame(fitBanner);
 
     print(`<span class="bold">${esc(CV.name)}</span> · <span class="accent">${esc(CV.title)}</span> · <span class="accent">AI Security</span>`);
     print(`<span class="dim">${esc(CV.tagline)}</span>`);
