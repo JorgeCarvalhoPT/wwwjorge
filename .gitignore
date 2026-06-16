@@ -1,0 +1,4 @@
+.claude/
+*.bak
+*.log
+.DS_Store
