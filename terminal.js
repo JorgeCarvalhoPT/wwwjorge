@@ -322,7 +322,7 @@
     date() { print(new Date().toString()); },
     ls() {
       print(
-        ["about", "experience", "skills", "projects", "education", "languages", "contact", "resume.pdf"]
+        ["about", "experience", "skills", "projects", "education", "languages", "contact"]
           .map((f) => (f.endsWith(".pdf") ? `<span class="red">${f}</span>` : `<span class="blue">${f}</span>`))
           .join("    ")
       );
