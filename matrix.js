@@ -4,6 +4,8 @@
   const canvas = document.getElementById("matrix");
   if (!canvas) return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  // on phones the full-screen opaque terminal covers the rain — skip it
+  if (window.matchMedia("(max-width: 640px)").matches) return;
 
   const ctx = canvas.getContext("2d");
   const GLYPHS = "ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎ0123456789ABCDEF<>=*+#%$".split("");

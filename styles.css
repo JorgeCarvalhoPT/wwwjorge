@@ -364,11 +364,41 @@ a:hover, .link:hover { color: var(--accent); border-bottom-color: var(--accent);
 }
 
 @media (max-width: 640px) {
+  html, body { height: 100%; overflow: hidden; }
   body { font-size: 13.5px; padding: 0; }
-  .terminal { height: 100vh; height: 100dvh; width: 100%; border-radius: 0; border: none; }
-  #cmdInput { font-size: 13.5px; }
-  .kvtable { grid-template-columns: 1fr; gap: 0 0; }
-  .kvtable .k { margin-top: 6px; }
+
+  .terminal {
+    height: 100vh;
+    height: 100svh;
+    width: 100%;
+    border-radius: 0;
+    border: none;
+  }
+
+  /* the full-screen opaque terminal hides the rain — don't waste CPU on it */
+  #matrix { display: none; }
+
+  .titlebar { padding-top: calc(10px + env(safe-area-inset-top)); }
+  .title { font-size: 11px; }
+
+  .quicknav { padding: 7px 10px; gap: 5px; }
+  .navchip { font-size: 12px; padding: 4px 10px; }
+
+  .screen { padding: 14px 14px 0; }
+
+  #output { -webkit-overflow-scrolling: touch; }
+
+  /* 16px keeps iOS from zooming in when the input is focused */
+  #cmdInput { font-size: 16px; }
+  .input-line { padding-bottom: calc(14px + env(safe-area-inset-bottom)); }
+
+  /* scale the ASCII banner to the viewport so it never overflows */
+  .banner { font-size: clamp(7px, 2.45vw, 13px); letter-spacing: 0; }
+
+  .kvtable { grid-template-columns: 1fr; gap: 0; }
+  .kvtable .k { margin-top: 8px; }
+
+  .tag { font-size: 12px; }
   .hint { display: none; }
 }
 
