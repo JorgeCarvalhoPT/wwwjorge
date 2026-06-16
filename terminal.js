@@ -158,7 +158,6 @@
         ["neofetch", "summary at a glance"],
         ["theme", "switch colors: green / amber / coral"],
         ["fx", "toggle CRT / matrix effects (readability)"],
-        ["download", "save / print this CV as PDF"],
         ["clear", "clear the screen"],
         ["help", "show this list"],
       ];
@@ -353,19 +352,6 @@
       print(`effects <span class="accent">${on ? "on" : "off"}</span> <span class="dim">· CRT scanlines, matrix rain & glow</span>`);
     },
 
-    async download() {
-      output.innerHTML = "";
-      const head = el("div");
-      head.innerHTML =
-        `<div class="bold">${esc(CV.name)}</div>` +
-        `<div class="dim">${esc(CV.title)} · AI Security` +
-        (CV.location ? ` · ${esc(CV.location)}` : "") + `</div>`;
-      printBlock(head);
-      await commands.resume();
-      print('<span class="dim">— opening print dialog · choose “Save as PDF” —</span>');
-      setTimeout(() => { try { window.print(); } catch (_) {} }, 300);
-    },
-
     async cat(args) {
       const t = (args[0] || "").toLowerCase().replace(/\.(txt|md|json|pdf)$/, "");
       const sections = ["about", "experience", "exp", "skills", "projects",
@@ -411,8 +397,6 @@
   commands.exp = commands.experience;
   commands.edu = commands.education;
   commands.cv = commands.resume;
-  commands.pdf = commands.download;
-  commands.print = commands.download;
   commands.metasploit = commands.msfconsole;
   commands.msf = commands.msfconsole;
   commands.netcat = commands.nc;
@@ -429,7 +413,7 @@
   commands["?"] = commands.help;
 
   const PUBLIC_CMDS = ["help", "about", "experience", "skills", "projects", "education",
-    "languages", "contact", "resume", "neofetch", "theme", "fx", "download", "cat", "ls", "clear", "whoami"];
+    "languages", "contact", "resume", "neofetch", "theme", "fx", "cat", "ls", "clear", "whoami"];
   const SECTIONS = ["about", "experience", "skills", "projects", "education",
     "languages", "contact", "resume"];
 

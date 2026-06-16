@@ -34,13 +34,11 @@ replace those with your real info. You don't need to touch `terminal.js`.
 
 `help` · `about` · `experience` (`exp`) · `skills` · `projects` ·
 `education` (`edu`) · `languages` · `contact` · `resume` (`cv`) ·
-`neofetch` · `cat <section>` · `theme` · `fx` · `download` (`pdf`) ·
+`neofetch` · `cat <section>` · `theme` · `fx` ·
 `whoami` · `ls` · `clear` · plus a couple of easter eggs.
 
 - **`theme`** cycles green / amber / coral (saved to localStorage).
 - **`fx`** toggles the CRT scanlines + Matrix rain + glow (readability / a11y).
-- **`download`** opens the print dialog → *Save as PDF* (a print stylesheet
-  reflows the CV into a clean black-on-white document).
 - Supports **Tab** completion, **↑/↓** history, **Ctrl-L** to clear, a sticky
   quick-nav bar, and click-to-copy on the Discord ID.
 
